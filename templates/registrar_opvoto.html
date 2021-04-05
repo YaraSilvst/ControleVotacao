@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load materializecss %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+
+<form method="POST" class="col s12">
+    <div class="container">
+
+        <div class="container">
+
+            {% csrf_token %}
+
+            <div class="input-field col s6">
+                {{ form.nome|materializecss:"icon=face" }}
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">arrow_forward</i>
+                {{ form.votacao }}
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">add_circle</i>
+                {{ form.codigo }}
+                <label for="icon_prefix">Código</label>
+            </div>
+
+            <br>
+            <div class="text-right">
+                <a href="{% url 'index' %}" class="btn btn-secondary text-white" type="button">
+                    <span class="text">Cancelar</span>
+                </a>
+                <button class="btn btn-primary" type="submit">
+                    <span class="text">Cadastrar</span>
+                </button>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load materializecss %}
+
+{% block content %}
+
+<br>
+
+<form method="POST" class="col s12" onsubmit="return validaDatas()">
+    {% csrf_token %}
+    <div class="container">
+
+            <div class="container">
+
+                
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    {{ form.nome }}
+                    <label for="icon_prefix">Nome</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">add_circle</i>
+                    {{ form.descricao }}
+                    <label for="icon_prefix">Descrição</label>
+                </div>
+
+                <div class="input-field col s6">
+                    {{ form.data_inicio|materializecss:"icon=date_range" }}
+                </div>
+
+                <div class="input-field col s6">
+                    {{ form.data_termino|materializecss:"icon=date_range" }}
+                </div>
+                
+                <p>
+                    <label>
+                        {{ form.anonimo }}
+                        <span>Voto Anônimo</span>
+                    </label>
+                </p>
+
+                <p>
+                    <label>
+                        {{ form.voto_unico }}
+                        <span>Voto Único</span>
+                    </label>
+                </p>
+                
+                <br>
+                <div class="text-right">
+                    <a href="{% url 'index' %}" class="btn btn-secondary text-white" type="button">
+                        <span class="text">Cancelar</span>
+                    </a>
+                    <button class="btn btn-primary" type="submit">
+                        <span class="text">Cadastrar</span>
+                    </button>
+                </div>
+            </div>
+    </div>
+</form>
+
+{% endblock %}

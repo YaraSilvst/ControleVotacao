@@ -1,0 +1,47 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data Início</th>
+                            <th>Data Término</th>
+                        </tr>
+                    </thead>            
+                    <tbody>
+                        {% for obj in listVotacoes %}
+                            <tr>
+                                <td>
+                                    {{ obj.nome }}
+                                </td>
+                                <td>
+                                    {{ obj.data_inicio }}
+                                </td>
+                                <td>
+                                    {{ obj.data_termino }}
+                                </td>
+                                <td>
+                                    <a href="{% url 'validar' obj.id %}" class="btn btn-secondary text-white" type="button">
+                                        <span class="text">Votar</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'apuracao_votos' obj.id %}" class="btn btn-secondary text-white" type="button">
+                                        <span class="text">Apuração</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+
+{%endblock%}
